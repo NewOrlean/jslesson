@@ -91,8 +91,8 @@
 // console.log ('arr' + " - object");
 // console.log (4 + +"5");
 
-let incr = 10,
-    decr = 10;
+// let incr = 10,
+//     decr = 10;
 
 // incr++;
 // decr--;
@@ -100,16 +100,20 @@ let incr = 10,
 // console.log (++incr); // префиксная форма - сначала прирощение-убавление, потом вывод
 // console.log (--decr); 
 
-console.log (incr++); // постфиксная форма - сначала вывод, потом прирощение-убавление
-console.log (decr--); 
+// console.log (incr++); // постфиксная форма - сначала вывод, потом прирощение-убавление
+// console.log (decr--); 
 
-console.log (5%2);
+// console.log (5%2);
 
-// console.log(2*4 == 8);
-console.log((2 + 2) * 2 == 8);
+// // console.log(2*4 == 8);
+// console.log((2 + 2) * 2 == 8);
 
-const isChecked  = false,
-      isClose = false;
+// const isChecked  = false,
+//       isClose = false;
 
-// console.log(isChecked && isClose);
-console.log(isChecked || !isClose);
+// // console.log(isChecked && isClose);
+// console.log(isChecked || !isClose);
+
+// chapter 2. lesson 9.1
+const numberOfFilms = prompt("Сколько фильмов вы уже посмотрели?");
+
