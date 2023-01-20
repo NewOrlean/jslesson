@@ -358,4 +358,4 @@ function showMyDB (hidden) {
 }
 showMyDB(personalMovieDB.privat);
 
-// chapter 2. lesson 16 - callback функция
+
