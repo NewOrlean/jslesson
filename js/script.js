@@ -287,75 +287,178 @@
 
 
 // chapter 2. lesson 15 - практика 3
-let numberOfFilms;
+// let numberOfFilms;
 
-function start() {
-    numberOfFilms = +prompt("Сколько фильмов вы уже посмотрели?", '');
-    while (numberOfFilms == '' || numberOfFilms == null || isNaN(numberOfFilms) ) {
-        numberOfFilms = +prompt("Сколько фильмов вы уже посмотрели?", '');    
-    }
-}
-start();
+// function start() {
+//     numberOfFilms = +prompt("Сколько фильмов вы уже посмотрели?", '');
+//     while (numberOfFilms == '' || numberOfFilms == null || isNaN(numberOfFilms) ) {
+//         numberOfFilms = +prompt("Сколько фильмов вы уже посмотрели?", '');    
+//     }
+// }
+// start();
 
-const personalMovieDB  = {
-    count:numberOfFilms,
-    movies: {},
-    actors: {},
-    genres: [],
-    privat: false
-};
+// const personalMovieDB  = {
+//     count:numberOfFilms,
+//     movies: {},
+//     actors: {},
+//     genres: [],
+//     privat: false
+// };
 
-function rememberMyFilms() {
-    for (let i = 0; i<2; i++) {
-        const   a = prompt('Один из последних просмотренных фильмов?', ''),
-                b = prompt('На сколько оцените его?', '');
-        if (a != null && a != '' && b != null && b != '' && a.length < 50) {
-            personalMovieDB.movies[a] = b;
-            console.log('done');}
-            else {
-            console.log('error');
-            i--;}
-    }
-}
-
-rememberMyFilms();
-
-function detectPersonalLevel () {
-    let f = personalMovieDB.count;
-    if (f < 10) {
-        console.log('Просмотренно довольно мало фильмов');
-    } else if (f >= 10 && f < 30) {
-        console.log('Вы классический зритель');
-    } else if (f >= 30) {
-        console.log('Вы киноман');
-    } else {
-        console.log('Ошибка');
-    }
-}
-
-detectPersonalLevel ();
-
-// function showMyDB () {
-//    if (personalMovieDB.privat) {
-//     console.log(personalMovieDB);
-//    } else {
-//     console.log("hui");
-//    }
+// function rememberMyFilms() {
+//     for (let i = 0; i<2; i++) {
+//         const   a = prompt('Один из последних просмотренных фильмов?', ''),
+//                 b = prompt('На сколько оцените его?', '');
+//         if (a != null && a != '' && b != null && b != '' && a.length < 50) {
+//             personalMovieDB.movies[a] = b;
+//             console.log('done');}
+//             else {
+//             console.log('error');
+//             i--;}
+//     }
 // }
 
-function writeYourGenres() { 
-    for (let i = 1; i <=3; i++) {
-        const genre = prompt(`Ваш любимый жанр под номером ${i}`);
-        personalMovieDB.genres[i-1] = genre;
-    }
+// rememberMyFilms();
+
+// function detectPersonalLevel () {
+//     let f = personalMovieDB.count;
+//     if (f < 10) {
+//         console.log('Просмотренно довольно мало фильмов');
+//     } else if (f >= 10 && f < 30) {
+//         console.log('Вы классический зритель');
+//     } else if (f >= 30) {
+//         console.log('Вы киноман');
+//     } else {
+//         console.log('Ошибка');
+//     }
+// }
+
+// detectPersonalLevel ();
+
+// // function showMyDB () {
+// //    if (personalMovieDB.privat) {
+// //     console.log(personalMovieDB);
+// //    } else {
+// //     console.log("hui");
+// //    }
+// // }
+
+// function writeYourGenres() { 
+//     for (let i = 1; i <=3; i++) {
+//         const genre = prompt(`Ваш любимый жанр под номером ${i}`);
+//         personalMovieDB.genres[i-1] = genre;
+//     }
+// }
+// writeYourGenres();
+
+// function showMyDB (hidden) {
+//        if (!hidden) {
+//         console.log(personalMovieDB);
+//        } 
+// }
+// showMyDB(personalMovieDB.privat);
+
+// // chapter 2. lesson 16 - Callback функция
+// function learnJS (lang, callback) {
+//     console.log(`Я учу: ${lang}`);
+//     callback();
+// }
+
+// // learnJS ('Javascript', function() {
+// //     console.log('Я прошёл этот урок!');  
+// // });
+
+// function done () {
+//     console.log('Я прошёл этот урок!');  
+// }
+
+// learnJS ('Javascript', done);
+
+// // chapter 2. lesson 17
+// const options = {
+//     name: 'test',
+//     width: 1024,
+//     height: 1024,
+//     colors: {
+//         border: 'black',
+//         bg: 'red'
+//     },
+//     makeTest: function() { //встраваем метод в объект
+//         console.log("Test");
+//     }
+// }; 
+
+// options.makeTest();
+
+// console.log(Object.keys(options).length);// встроенные свойства в объекте
+
+// //вытаскиваем переменные 
+// const {border, bg} = options.colors;
+
+// console.log(border);
+
+
+// console.log(options["colors"]["border"]);
+
+// console.log(options.name);
+
+// delete options.name;
+
+// console.log(options);
+
+// for (let key in options) {
+//     console.log(`Свойства ${key} имеет заечние ${options[key]}`);
+// }
+
+//перебор внутри обекта options .а затем внутри colors 
+// let counter = 0;
+// for (let key in options) {
+//     if (typeof(options [key]) === 'object') { // внутри colors
+//         for (let i in (options [key])) {
+//             console.log(`Свойства ${key} имеет заечние ${options[key][i]}`);  
+//             }
+//     } else {
+//         console.log(`Свойства ${key} имеет заечние ${options[key]}`);
+//     }
+//     counter++;
+// }
+// console.log(counter);
+
+// chapter 2. lesson 18 Массивы и псевдомассивы 
+// const arr = [1, 12, 3, 16];
+// arr[99] = 0;
+// // arr.pop(); //убрать элемент в конце массива
+// // arr.push(10);  //добавить элемент в конце массива
+// console.log(arr.length);
+// console.log(arr);
+
+// arr.forEach(function (item, i, arr){
+//    console.log(`${i}: ${item} внутри массива ${arr}`) 
+// });
+
+
+// for (let i = 0; i < arr.length; i++) {
+//     console.log(arr[i]);
+// }
+
+// for (let value of arr) {
+//     console.log(value);
+// }
+
+// например обработка пакета данных которые пришли строкой и надо всё это запихнуть в массив
+// const str = prompt("","");
+// const products = str.split(", ");
+// // console.log(products);
+// products.sort();
+
+// console.log(products.join(';')); //данные из массива выводятся в строку 
+
+// сортировка. но как string
+const arr = [1, 3, 2, 10, 5, 4]
+arr.sort(compareNum);
+console.log(arr);
+
+// сортировка. но как число
+function compareNum (a, b) {
+    return a - b;
 }
-writeYourGenres();
-
-function showMyDB (hidden) {
-       if (!hidden) {
-        console.log(personalMovieDB);
-       } 
-}
-showMyDB(personalMovieDB.privat);
-
-
