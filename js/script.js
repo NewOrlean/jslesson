@@ -454,11 +454,119 @@
 // console.log(products.join(';')); //данные из массива выводятся в строку 
 
 // сортировка. но как string
-const arr = [1, 3, 2, 10, 5, 4]
-arr.sort(compareNum);
-console.log(arr);
+// const arr = [1, 3, 2, 10, 5, 4]
+// arr.sort(compareNum);
+// console.log(arr);
 
-// сортировка. но как число
-function compareNum (a, b) {
-    return a - b;
+// // сортировка. но как число
+// function compareNum (a, b) {
+//     return a - b;
+// }
+
+// chapter 2. lesson 19 Передача по ссылке или по значению
+
+// передача по значению
+// let a = 5,
+//     b = a;
+
+// b = b + 5;
+
+// console.log(b);
+// console.log(a);
+
+// передача по ссылке - тут изменили в copy, а данные по сссылке улетели в obj
+// const obj = {
+//     a: 5,
+//     b: 1
+// };
+
+// const copy = obj;
+
+// copy.a = 10;
+// console.log(obj);
+// console.log(copy);
+
+// создание копий 
+
+function copy (mainObj) {
+     let objCopy = {}; // создание пустого объекта
+     
+     let key; //обявили ключ
+     for (key in mainObj) {  //  перебор key в mainObj
+        objCopy[key] = mainObj[key];   
+     }
+     return objCopy;
+} 
+
+
+const numbers = {
+    a:2,
+    b:5,
+    c: {
+        x:7,
+        y:4
+    }
+};
+
+const newNumbers = copy(numbers);
+
+newNumbers.a = 10;  
+
+console.log(newNumbers);
+console.log(numbers);
+
+ //соединение двух объектов
+
+ const add ={
+    d:17,
+    e:20
+ };
+
+ console.log(Object.assign(numbers, add ));
+
+ //другой вариант копирования объекта 9 (поверхностная копия)
+
+const clone = Object.assign({}, add);
+clone.d = 'hui';
+console.log(add);
+console.log(clone);
+
+// создание копии масива
+const oldArray = ['a', 'b', 'c'];
+const newArray = oldArray.slice();
+newArray [0] = 'hui';
+console.log(newArray);
+console.log(oldArray);
+
+//копия через оператор разворота spread
+const video = ['youtube', 'vimeo', 'rutube'],
+        blogs = ['wordpress', 'livejounal', 'blogger'],
+        internet = [...video, ...blogs, 'vk', 'facebook']; 
+
+console.log(internet);
+
+//ещё пример
+function log (a, b, c) {
+    console.log(a);
+    console.log(b);  
+    console.log(c);
 }
+
+const num = [2, 5, 7];
+
+log(...num);
+
+//spread оператор
+const array = ["a", "b"];
+
+const newAarray = [...array];
+
+const q = {
+    one: 1,
+    two: 2
+};
+
+const newObj = {...q};
+
+console.log(newAarray);
+console.log(newObj);
