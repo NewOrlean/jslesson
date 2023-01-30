@@ -488,85 +488,321 @@
 
 // создание копий 
 
-function copy (mainObj) {
-     let objCopy = {}; // создание пустого объекта
+// function copy (mainObj) {
+//      let objCopy = {}; // создание пустого объекта
      
-     let key; //обявили ключ
-     for (key in mainObj) {  //  перебор key в mainObj
-        objCopy[key] = mainObj[key];   
-     }
-     return objCopy;
-} 
+//      let key; //обявили ключ
+//      for (key in mainObj) {  //  перебор key в mainObj
+//         objCopy[key] = mainObj[key];   
+//      }
+//      return objCopy;
+// } 
 
 
-const numbers = {
-    a:2,
-    b:5,
-    c: {
-        x:7,
-        y:4
-    }
-};
+// const numbers = {
+//     a:2,
+//     b:5,
+//     c: {
+//         x:7,
+//         y:4
+//     }
+// };
 
-const newNumbers = copy(numbers);
+// const newNumbers = copy(numbers);
 
-newNumbers.a = 10;  
+// newNumbers.a = 10;  
 
-console.log(newNumbers);
-console.log(numbers);
+// console.log(newNumbers);
+// console.log(numbers);
 
- //соединение двух объектов
+//  //соединение двух объектов
 
- const add ={
-    d:17,
-    e:20
- };
+//  const add ={
+//     d:17,
+//     e:20
+//  };
 
- console.log(Object.assign(numbers, add ));
+//  console.log(Object.assign(numbers, add ));
 
- //другой вариант копирования объекта 9 (поверхностная копия)
+//  //другой вариант копирования объекта 9 (поверхностная копия)
 
-const clone = Object.assign({}, add);
-clone.d = 'hui';
-console.log(add);
-console.log(clone);
+// const clone = Object.assign({}, add);
+// clone.d = 'hui';
+// console.log(add);
+// console.log(clone);
 
-// создание копии масива
-const oldArray = ['a', 'b', 'c'];
-const newArray = oldArray.slice();
-newArray [0] = 'hui';
-console.log(newArray);
-console.log(oldArray);
+// // создание копии масива
+// const oldArray = ['a', 'b', 'c'];
+// const newArray = oldArray.slice();
+// newArray [0] = 'hui';
+// console.log(newArray);
+// console.log(oldArray);
 
 //копия через оператор разворота spread
-const video = ['youtube', 'vimeo', 'rutube'],
-        blogs = ['wordpress', 'livejounal', 'blogger'],
-        internet = [...video, ...blogs, 'vk', 'facebook']; 
+// const video = ['youtube', 'vimeo', 'rutube'],
+//         blogs = ['wordpress', 'livejounal', 'blogger'],
+//         internet = [...video, ...blogs, 'vk', 'facebook']; 
 
-console.log(internet);
+// console.log(internet);
 
-//ещё пример
-function log (a, b, c) {
-    console.log(a);
-    console.log(b);  
-    console.log(c);
-}
+// //ещё пример
+// function log (a, b, c) {
+//     console.log(a);
+//     console.log(b);  
+//     console.log(c);
+// }
 
-const num = [2, 5, 7];
+// const num = [2, 5, 7];
 
-log(...num);
+// log(...num);
 
 //spread оператор
-const array = ["a", "b"];
+// const array = ["a", "b"];
 
-const newAarray = [...array];
+// const newAarray = [...array];
 
-const q = {
-    one: 1,
-    two: 2
-};
+// const q = {
+//     one: 1,
+//     two: 2
+// };
 
-const newObj = {...q};
+// const newObj = {...q};
 
-console.log(newAarray);
-console.log(newObj);
+// console.log(newAarray);
+// console.log(newObj);
+
+// chapter 2. lesson 20 Основы ООП, прототипно ориенторованное программирование)
+
+// все солдаты
+// const soldier = {
+//     health: 400,
+//     armor: 100,
+//     sayHello: function() {
+//         console.log("Hello!");
+//     }
+// };
+
+// //конкретный солдат
+
+// const john = {
+//     health: 100,
+// }; 
+
+// // нужно описать джона через обычного соладата, но с особенностями (пример стары, в проектрах лучше  не юзать)
+
+// // john.__proto__ = soldier;
+// // console.log(john.armor);
+
+// Object.setPrototypeOf(john, soldier);
+
+// john.sayHello();
+
+
+//как делают нормальные прогеры
+// const john = Object.create(soldier);
+// john.sayHello();
+
+// chapter 2. lesson 21 практика 4.
+
+// const personalMovieDB  = {
+//     count:0,
+//     movies: {},
+//     actors: {},
+//     genres: [],
+//     privat: false,
+//     start: function() {
+//         personalMovieDB.count = +prompt("Сколько фильмов вы уже посмотрели?", '');
+//         while (personalMovieDB.count == '' || personalMovieDB.count == null || isNaN(personalMovieDB.count) ) {
+//             personalMovieDB.count = +prompt("Сколько фильмов вы уже посмотрели?", '');    
+//         }
+//     },
+    
+//     rememberMyFilms: function () {
+//         for (let i = 0; i<2; i++) {
+//             const   a = prompt('Один из последних просмотренных фильмов?', ''),
+//                     b = prompt('На сколько оцените его?', '');
+//             if (a != null && a != '' && b != null && b != '' && a.length < 50) {
+//                 personalMovieDB.movies[a] = b;
+//                 console.log('done');}
+//                 else {
+//                 console.log('error');
+//                 i--;}
+//         }
+//     },
+
+//     detectPersonalLevel: function () {
+//         let f = personalMovieDB.count;
+//         if (f < 10) {
+//             console.log('Просмотренно довольно мало фильмов');
+//         } else if (f >= 10 && f < 30) {
+//             console.log('Вы классический зритель');
+//         } else if (f >= 30) {
+//             console.log('Вы киноман');
+//         } else {
+//             console.log('Ошибка');
+//         }
+//     },
+    
+//     //var1
+//     // writeYourGenres: function () { 
+//     //     for (let i = 1; i <=3; i++) {
+//     //         let genre = prompt(`Ваш любимый жанр под номером ${i}`);
+
+//     //         if (genre === '' || genre == null) { 
+//     //             console.log('Некорректный ввод');   
+//     //         i--;
+//     //         } else { 
+//     //             personalMovieDB.genres[i - 1] = genre;                
+//     //         }                          
+//     //     }  
+        
+//     //     personalMovieDB.genres.forEach (function(item, i) {  
+//     //         console.log(`Любимый жанр ${i+1} - это ${item}`);
+//     //     }); 
+//     // },
+
+//     //var2
+//     writeYourGenres: function () { 
+//         for (let i = 1; i < 2; i++) {
+//             let genre = prompt(`Введите ваши любимые жанры через запятую`);
+
+//             if (genre === '' || genre == null) { 
+//                 console.log('Некорректный ввод');   
+//                 i--;
+//             } else { 
+//                 personalMovieDB.genres = genre.split(', ');  
+//                 personalMovieDB.genres.sort();          
+//             }                          
+//         }  
+        
+//         personalMovieDB.genres.forEach (function(item, i) {  
+//             console.log(`Любимый жанр ${i+1} - это ${item}`);
+//         }); 
+//     },
+
+//     toggleVisibleMyDB: function() {
+//         if (personalMovieDB.privat) {
+//             personalMovieDB.privat = false;
+//         } else {
+//             personalMovieDB.privat = true;
+//         }
+//     },
+
+//     showMyDB: function (hidden) {
+//         if (!hidden) {
+//          console.log(personalMovieDB);
+//         } 
+//     }
+// };
+
+// chapter 2. lesson 22 отлавливаем ошибки
+
+// function hello() {
+//     console.log('Hello World!');
+// }
+
+// hello();
+
+// function hi() {
+//     console.log('Say Hi!');
+// }
+
+// hi();
+
+// const arr = [1, 14, 4, 30, 54];
+//     sorted = arr.sort(compareNum);
+
+// function compareNum(a, b) {
+//     return a - b;
+// }    
+
+// // chapter 2. lesson 23 Динамическая типизация
+
+// //to String
+
+// //1)
+
+// console.log(typeof(String(5))); 
+
+// // 2)
+// console.log(typeof(5 + '')); 
+
+// //to Number
+
+// // 1)
+// console.log(typeof(Number('4'))); 
+
+// // 2)
+// console.log(typeof(+'4')); 
+
+// // 3)
+// console.log(typeof(parseInt("15px", 10))); 
+// console.log(parseInt("15px", 10)); 
+
+// // to Boolean
+
+// // false  Это 0, '', null, undefined, NaN
+
+// let switcher = null;
+
+// if (switcher) {
+//     console.log('go go');
+// }
+
+// switcher = 1; 
+
+// if (switcher) {
+//     console.log('go go');
+// }
+
+// // 2)
+// console.log(typeof(Boolean('4'))); 
+
+// // 3)
+// console.log(typeof(!!"4444")); 
+
+// chapter 2. lesson 24 Задачи  для собеса
+
+// 1)
+// let x =5; alert(x++);
+
+// // 2)
+// console.log([] + false - null + true);
+
+// // 3)
+//     let y = 1;
+//     let x = y = 2;
+//     alert(x);
+// //4)
+//     console.log([] + 1 + 2);
+
+// // 5)
+// alert("1"[0]);
+
+// 6)
+// console.log(2 && 1 && null && 0 && undefined);
+// "ИЛИ" запинается на на лжи и выводит элемент. где он запнулся  null
+// "И" запинается на правде
+
+// // 7)
+// console.log(!!(1 && 2) === (1 && 2)); 
+
+// 8)
+// alert( null || 2 && 3 || 4);
+
+//9)
+// const a = [1, 2, 3]; 
+// const b = [1, 2, 3]; 
+// console.log(a == b)
+
+// 10)
+
+// alert(+"Infinity");
+
+// console.log(typeof(+"Infinity"));
+
+// 11)
+// console.log("Ёжик" > "яблоко");
+
+// 12)
+// console.log(0 || "" || 2 || undefined || true || falsе);
